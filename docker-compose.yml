@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: .
+    command: npm start
+    develop:
+      watch:
+        - action: sync
+          path: src
+          target: /usr/src/app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+    ports:
+      - 1234:1234
